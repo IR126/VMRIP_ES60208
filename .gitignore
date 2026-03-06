@@ -1,7 +1,0 @@
-battery_alt_dataset/
-results/
-__pycache__/
-*.pyc
-.venv/
-.env
- 
