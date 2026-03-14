@@ -1,0 +1,2 @@
+battery,subfolder,n_cycles,cap_first_Ah,cap_last_Ah,cap_drop_Ah,cap_fade_pct,cap_pred_err_pct,V_RMSE_mV_mean,V_RMSE_mV_best,V_RMSE_mV_worst,SOC_RMSE_pct,SOC_MAE_pct,c0_soc_rmse_pct,c0_soc_mae_pct,c1_soc_rmse_pct,c1_soc_mae_pct,c2_soc_rmse_pct,c2_soc_mae_pct,c3_soc_rmse_pct,c3_soc_mae_pct,c4_soc_rmse_pct,c4_soc_mae_pct,c5_soc_rmse_pct,c5_soc_mae_pct,c6_soc_rmse_pct,c6_soc_mae_pct
+battery10,regular_alt_batteries,7,2.4533,2.0551,0.3982,16.23,1.868,68.84,41.109,108.565,2.3126,1.5079,1.7424,1.5298,5.0898,4.6392,2.0796,1.8096,0.9526,0.7586,0.7383,0.6703,0.452,0.3583,0.476,0.3178

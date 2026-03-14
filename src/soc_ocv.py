@@ -92,9 +92,15 @@ def fit_ocv_soc(soc_df):
     win = min(31, (len(binned) // 4) * 2 + 1)
     binned["v_smooth"] = savgol_filter(binned["median"], window_length=win, polyorder=3)
 
-    spline = UnivariateSpline(
+    spline_raw = UnivariateSpline(
         binned["soc_center"], binned["v_smooth"], s=SPLINE_SMOOTHING, k=4
     )
+
+    # Correct for resistive drop: terminal voltage during discharge < true OCV
+    # Shift entire curve up so spline(1.0) matches the observed max voltage
+    v_max_observed = float(soc_df["voltage"].quantile(0.999))
+    offset = max(0.0, v_max_observed - float(spline_raw(1.0)))
+    spline = lambda s, _sp=spline_raw, _off=offset: _sp(s) + _off
 
     soc_axis   = np.linspace(0.0, 1.0, 100)
     ocv_lookup = pd.DataFrame({"SOC": soc_axis, "OCV_V": spline(soc_axis)})

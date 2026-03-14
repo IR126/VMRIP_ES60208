@@ -32,7 +32,7 @@ BATTERY_SUBFOLDERS = [
 # ── CHANGE THIS IF YOUR PACK IS DIFFERENT ────────────────────────────────────
 
 PACK_V_MIN   = 5.0    # V   minimum valid terminal voltage (pack-level cutoff)
-PACK_V_MAX   = 8.4    # V   maximum valid terminal voltage (pack-level full)
+PACK_V_MAX   = 8.7    # V   maximum valid terminal voltage (pack-level full)
 RATED_CAP_AH = 2.5    # Ah  nameplate capacity of one cell (not pack)
 NOMINAL_DISCHARGE_CURRENT_A = 2.5   # A   constant CC rate of reference discharges
 
@@ -53,12 +53,12 @@ TEMP_SPIKE_THRESH     = 15.0
 MIN_VALID_CAP_AH = 0.5
 
 # OCV–SoC spline fit
-SOC_BINS         = 200
-SPLINE_SMOOTHING = 0.02
+SPLINE_SMOOTHING = 0.02 
+SOC_BINS = 100           
 
 # ECM optimiser — initial guess and bounds for [R0 (Ω), R1 (Ω), C1 (F)]
-ECM_INIT   = [0.05,  0.02,  2500.0]
-ECM_BOUNDS = [(0.001, 0.5), (0.001, 0.5), (10.0, 50000.0)]
+ECM_INIT   = [0.01, 0.01, 500.0]
+ECM_BOUNDS = [(1e-4, 0.2), (1e-4, 0.2), (10.0, 50000.0)]
 
 # UKF
 UKF_DEFAULTS = dict(
@@ -66,4 +66,4 @@ UKF_DEFAULTS = dict(
     P0_soc=0.01, P0_vrc=1e-4,
     alpha_ukf=1e-3, beta_ukf=2.0, kappa_ukf=0.0,
 )
-OPTUNA_TRIALS = 150
+OPTUNA_TRIALS = 50
